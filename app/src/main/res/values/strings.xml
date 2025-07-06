@@ -1,0 +1,495 @@
+<resources>
+    <string name="app_name" translatable="false">Reflect</string>
+    <string name="email_developer" translatable="false">novandiramadhan80@gmail.com</string>
+
+    <!--  Splash Screen  -->
+    <string name="app_motto">Know yourself, nurture your emotions.</string>
+    <string name="btn_continue">Continue</string>
+
+    <!--  Auth Screen  -->
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Sign in to continue to your account</string>
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Join Reflect to track your moods and journal your thoughts</string>
+    <string name="login_button">Sign In</string>
+    <string name="no_account_register">Don\'t have an account? Register</string>
+    <string name="have_account_login">Already have an account? Login</string>
+    <string name="or">OR</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="terms_and_conditions">By continuing, you agree to our Terms of Service and Privacy Policy</string>
+
+    <!--  Splash Screen  -->
+    <string name="weekly_insights">Weekly Insights</string>
+
+    <!--  Auth Screen  -->
+    <string name="error_last_mood_room">Failed to load last mood from local storage.</string>
+    <string name="error_last_mood_firestore">Failed to load last mood from server.</string>
+    <string name="error_last_mood_not_found">No last mood found.</string>
+
+    <!--  Mood History Screen  -->
+    <string name="mood_item_level" translatable="false">%d/10</string>
+    <string name="no_mood_history">No mood history data</string>
+    <string name="no_mood_history_desc">Start recording your daily moods to see your history here</string>
+    <string name="error_load_mood_history">Failed to load mood history. Please try again.</string>
+    <string name="error_delete_mood_history">Failed to delete mood history. Please try again.</string>
+    <string name="success_delete_mood_history">Mood history deleted successfully.</string>
+    <string name="delete_mood_history_title">Delete Mood Entry</string>
+    <string name="retry">Retry</string>
+    <string name="delete_mood_history_description">Are you sure you want to delete this mood entry? This action cannot be undone.</string>
+    <string name="error_mood_history_default">Unable to load your mood history. Please try again.</string>
+
+    <!--  Mood Entry Screen  -->
+    <string name="mood_entry_title">Mood Entry</string>
+    <string name="success_add_journal">Journal entry added successfully</string>
+    <string name="error_add_journal">Failed to add journal entry. Please try again.</string>
+    <string name="error_network">Network error. Please check your connection and try again.</string>
+    <string name="error_mood_entry_fields">Please select a mood, mood level and triggers</string>
+
+    <!--  Bottom Bar Menus  -->
+    <string name="home">Home</string>
+    <string name="insight" translatable="false">Insight</string>
+    <string name="mood_history">Mood History</string>
+    <string name="profile">Profile</string>
+    <string name="notifications">Notifications</string>
+
+    <!--  Fields  -->
+    <string name="email" translatable="false">Email</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
+
+    <!--  Validations  -->
+    <string name="email_empty">Email cannot be empty.</string>
+    <string name="email_error">Please enter a valid email address.</string>
+    <string name="password_empty">Password cannot be empty.</string>
+    <string name="password_error">Password must be at least 8 characters long.</string>
+    <string name="name_empty">Name cannot be empty</string>
+    <string name="fields_empty">Please fill all required fields</string>
+
+    <!--  Home: TopBar  -->
+    <string name="topbar_home_title" translatable="false">%s, %s</string>
+
+    <!--  Home: Mood Card  -->
+    <string name="mood_card_title">Today\'s Mood</string>
+    <string name="mood_card_title_last">Your Last Mood</string>
+    <string name="mood_level" translatable="false">Level: %s/10</string>
+    <string name="last_recorded">Last recorded: %s</string>
+    <string name="choose_today_mood">Choose Today\'s Mood</string>
+    <string name="no_last_mood_description">You have not recorded any mood yet. Start tracking your mood to see your last mood here.</string>
+    <string name="error_weekly_stats_room" translatable="false">Failed to load weekly stats from local storage.</string>
+    <string name="error_weekly_stats_firestore" translatable="false">Failed to load weekly stats from server.</string>
+    <string name="error_weekly_stats_not_found">No weekly stats data found.</string>
+
+    <!--  Mood Levels  -->
+    <string-array name="mood_levels">
+        <item>Very Sad</item>
+        <item>Sad</item>
+        <item>Disappointed</item>
+        <item>Uncomfortable</item>
+        <item>Okay</item>
+        <item>Pretty Good</item>
+        <item>Good</item>
+        <item>Happy</item>
+        <item>Very Happy</item>
+        <item>Joyful</item>
+    </string-array>
+
+    <!--  Greetings  -->
+    <string-array name="greetings">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Night</item>
+    </string-array>
+
+    <!--  Home: Weekly Stats  -->
+    <string name="weekly_stats_title">Weekly Statistics</string>
+    <string name="dominant_mood">Mostly %s</string>
+    <string name="active_days">%d out of %d days recorded</string>
+    <string name="mood_distribution">Mood Distribution</string>
+    <string name="no_weekly_data_title">No weekly data yet</string>
+    <string name="no_weekly_data_description">Record your mood on at least one day per week to display your weekly mood data</string>
+
+    <!--  Home: Daily Quote  -->
+    <string name="daily_quote_title">Daily Quote</string>
+    <string name="no_quote_description">Failed to fetch quote</string>
+
+    <!--  Home: Reminder  -->
+    <string name="reminder_title">Haven\'t recorded your mood today?</string>
+    <string name="record_mood_button">Record Mood</string>
+
+    <!--  Welcome Slides  -->
+    <string name="welcome_slide_title_1">Welcome to Reflect</string>
+    <string name="welcome_slide_description_1">This is your safe space to reflect, release, and reconnect with your emotions. Write freely and take the first step toward better self-awareness.</string>
+    <string name="welcome_slide_title_2">Track Your Moods &amp; Moments</string>
+    <string name="welcome_slide_description_2">Easily log how you feel, what influenced your day, and what thoughts are on your mind. Your emotions matter, and every entry counts.</string>
+    <string name="welcome_slide_title_3">Discover Your Emotional Patterns</string>
+    <string name="welcome_slide_description_3">See your mood trends, reflect on past weeks, and find balance through personalized insights and quotes.</string>
+
+    <!--  Insight: Mood Trend Chart  -->
+    <string name="mood_trends">Mood Trends</string>
+    <string name="no_mood_trend_data">No mood data for this week</string>
+    <string name="select_year">Select Year</string>
+    <string name="this_week">This week</string>
+    <string name="select_week">Select week</string>
+    <string name="filter_week_choose">Week %s - %s</string>
+    <string name="error_mood_trend">Failed to load mood trend.</string>
+    <string name="error_mood_trend_default">Unable to load mood trend data. Please try again.</string>
+
+    <!--  Insight: MostFrequentMoodCard  -->
+    <string name="most_frequent_mood">Most Frequent Mood</string>
+    <string name="longest_frequent_mood">%s days</string>
+    <string name="no_most_frequent_mood">No most frequent mood data yet</string>
+    <string name="error_most_frequent_mood_default">Unable to load average mood data. Please try again.</string>
+
+    <!--  Insight: Top Triggers Card  -->
+    <string name="top_triggers">Top Triggers</string>
+    <string name="top_triggers_description">Identify external and internal factors influencing your mood this week</string>
+    <string name="error_top_triggers_not_found">No top triggers data found for this week.</string>
+    <string name="error_top_triggers_default">Unable to load top triggers data. Please try again.</string>
+
+    <!--  Insight: Average Mood Level Card  -->
+    <string name="average_mood_level">Average Mood Level</string>
+    <string name="average_mood_level_description">Indicator of your general emotional well-being this week</string>
+    <string name="no_average_mood_not_found">No average mood data found for this week.</string>
+    <string name="error_average_mood_default">Unable to load average mood data. Please try again.</string>
+
+    <string-array name="average_mood_feedback">
+        <item>You might be going through a tough time. Take a break and reach out for support if needed.</item>
+        <item>It’s okay to have hard days. Try focusing on small things that bring you comfort.</item>
+        <item>Take time to care for yourself and find ways to lift your spirits.</item>
+        <item>Things might feel neutral or slightly down. Explore what brings you peace or small joys.</item>
+        <item>You’re managing your feelings well. Keep exploring what works for your well-being.</item>
+        <item>You’re experiencing more positive days. Celebrate this and find ways to sustain it.</item>
+        <item>You seem to be in a positive place overall. Keep taking care of yourself and your mind.</item>
+        <item>You’re radiating positivity and balance. Stay mindful of this and continue your healthy habits.</item>
+        <item>You’re feeling great and full of good energy. Keep nurturing this mindset and share it with others if you can.</item>
+    </string-array>
+
+    <!--  Insight: Entry Streak Card  -->
+    <string name="entry_streak">Entry Streak</string>
+    <string name="entry_streak_description">Track your journaling consistency to build a healthy reflection habit</string>
+    <string name="no_entry_streak">No entry streak data found for this week.</string>
+    <string name="streak_perfect">Perfect week! Keep it up!</string>
+    <string name="streak_consistent">Great consistency!</string>
+    <string name="streak_good">Good progress!</string>
+    <string name="streak_getting_started">Keep building your habit</string>
+    <string name="streak_days">%s of 7 days</string>
+    <string name="error_entry_streak_default">Unable to load entry streak data. Please try again.</string>
+
+    <!-- Dialog -->
+    <string name="filter_entries">Filter Entries</string>
+    <string name="filter_by_mood">Filter by Mood</string>
+    <string name="sort_by">Sort by</string>
+    <string name="newest_first">Newest first</string>
+    <string name="oldest_first">Oldest first</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear">Clear</string>
+    <string name="confirm">Confirm</string>
+    <string name="change">Change</string>
+    <string name="sign_out_title">Sign Out</string>
+    <string name="sign_out_description">Are you sure you want to sign out?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="select">Select</string>
+    <string name="close">Close</string>
+    <string name="choose_time">Choose Time</string>
+
+    <!--  Mood Triggers  -->
+    <string-array name="mood_triggers">
+        <item>Work</item>
+        <item>School</item>
+        <item>Family</item>
+        <item>Friends</item>
+        <item>Romantic relationship</item>
+        <item>Health</item>
+        <item>Finances</item>
+        <item>Weather</item>
+        <item>Sleep quality</item>
+        <item>Exercise</item>
+        <item>Social media</item>
+        <item>Traffic</item>
+        <item>Deadlines</item>
+        <item>Feeling lonely</item>
+        <item>Success</item>
+        <item>Failure</item>
+        <item>Hobbies</item>
+        <item>Unexpected events</item>
+        <item>Pets</item>
+        <item>Travel</item>
+        <item>Noise</item>
+        <item>Daily commute</item>
+        <item>Loss</item>
+        <item>Conflict</item>
+        <item>Support</item>
+        <item>Learning</item>
+        <item>Creativity</item>
+        <item>Nature</item>
+        <item>Routine</item>
+        <item>Change</item>
+        <item>Technology</item>
+        <item>Community</item>
+        <item>Spirituality</item>
+        <item>Self-care</item>
+        <item>Achievements</item>
+        <item>Procrastination</item>
+        <item>Chores</item>
+        <item>Self-reflection</item>
+        <item>Gratitude</item>
+        <item>Art</item>
+        <item>Movies</item>
+        <item>Volunteering</item>
+        <item>Mentorship</item>
+        <item>Learning new stuff</item>
+        <item>Public speaking</item>
+        <item>Shopping</item>
+        <item>Cooking</item>
+        <item>Pet care</item>
+        <item>Gaming</item>
+        <item>Making new connections</item>
+        <item>Online/offline events</item>
+        <item>Silence</item>
+        <item>Alone time</item>
+        <item>Mindfulness</item>
+        <item>Therapy</item>
+        <item>Losing a pet</item>
+        <item>Getting promoted</item>
+        <item>Getting demoted</item>
+        <item>Special day</item>
+        <item>Birthday</item>
+        <item>Reunion</item>
+        <item>Breakup</item>
+        <item>Moving</item>
+        <item>New job</item>
+        <item>Retirement</item>
+        <item>Pregnancy</item>
+        <item>Becoming a parent</item>
+        <item>Divorce</item>
+        <item>Self-acceptance</item>
+        <item>Surprise</item>
+        <item>Waiting for something</item>
+        <item>Inspiration</item>
+        <item>Forgiveness</item>
+        <item>Learning from mistakes</item>
+        <item>Celebrating small wins</item>
+        <item>Acts of kindness</item>
+        <item>Facing fears</item>
+        <item>Letting go</item>
+        <item>Personal growth</item>
+        <item>Mindset shift</item>
+        <item>Overcoming challenges</item>
+        <item>Grieving</item>
+        <item>Setting goals</item>
+        <item>Reconnecting</item>
+        <item>Feeling appreciated</item>
+        <item>Being heard</item>
+        <item>Making decisions</item>
+        <item>Taking risks</item>
+        <item>Finding purpose</item>
+        <item>Sleep quality</item>
+        <item>Family drama</item>
+        <item>Support from friends</item>
+        <item>Sunlight</item>
+        <item>Overthinking</item>
+        <item>Health issues</item>
+        <item>Financial stress</item>
+        <item>Romantic bond</item>
+        <item>Arguments</item>
+        <item>Criticism</item>
+        <item>Compliments</item>
+        <item>Social gatherings</item>
+        <item>Caffeine</item>
+        <item>Lack of routine</item>
+        <item>Music</item>
+        <item>Physical activity</item>
+        <item>Food &amp; drink</item>
+        <item>Hunger</item>
+        <item>Old memories</item>
+        <item>Weird dreams</item>
+        <item>Personal goals</item>
+        <item>Fear of success</item>
+        <item>Self-doubt</item>
+        <item>New experiences</item>
+        <item>Unfinished tasks</item>
+        <item>Feeling productive</item>
+        <item>Time pressure</item>
+        <item>Messy environment</item>
+        <item>Clean space</item>
+        <item>Unexpected message</item>
+        <item>Plans changed</item>
+        <item>Waiting in line</item>
+        <item>Feeling alone</item>
+        <item>Being around people</item>
+        <item>Silence from others</item>
+        <item>Busy schedule</item>
+        <item>Free time</item>
+        <item>Personal reflection</item>
+        <item>Uncertainty</item>
+        <item>Too much stimulation</item>
+        <item>Boredom</item>
+        <item>Jealousy</item>
+        <item>Envy</item>
+        <item>Pride</item>
+        <item>Embarrassment</item>
+        <item>Rejection</item>
+        <item>Appreciation</item>
+        <item>Feeling safe</item>
+        <item>Insecurity</item>
+        <item>Trust</item>
+        <item>Betrayal</item>
+        <item>Being ignored</item>
+        <item>Kindness</item>
+        <item>Helping others</item>
+        <item>Asking for help</item>
+        <item>Rain</item>
+        <item>Sunset</item>
+        <item>Morning routine</item>
+        <item>Night vibes</item>
+        <item>Phone call</item>
+        <item>Text message</item>
+        <item>New friendship</item>
+        <item>Job interview</item>
+        <item>Exams</item>
+        <item>Comparing yourself to others</item>
+        <item>Feeling misunderstood</item>
+        <item>Past trauma</item>
+        <item>Acts of love</item>
+        <item>Feeling loved</item>
+        <item>Physical pain</item>
+        <item>Learning something new</item>
+        <item>Not meeting expectations</item>
+        <item>Sense of meaning</item>
+        <item>Clutter</item>
+        <item>Order</item>
+    </string-array>
+
+    <!-- Mood Entry Screen -->
+    <string name="mood_triggers_title">What triggered this mood?</string>
+    <string name="mood_triggers_description">Select at least 3 factors that influenced your mood today</string>
+    <string name="mood_triggers_search">Search triggers</string>
+    <string name="mood_triggers_error">Please select at least 3 triggers</string>
+    <string name="mood_triggers_selected">Selected: %d</string>
+    <string name="mood_intensity_title">Intensity Level</string>
+    <string name="mood_intensity_description">Rate the intensity of your mood from 1 to 10</string>
+    <string name="mood_tags_title">Tags (Optional)</string>
+    <string name="mood_tags_description">Add tags to help organize and find your entries later</string>
+    <string name="mood_tags_input">Add a tag (e.g. #work)</string>
+    <string name="mood_journal_title">Journal Entry (Optional)</string>
+    <string name="mood_journal_description">Write down your thoughts, reflections, or anything on your mind</string>
+    <string name="mood_journal_placeholder">Write what\'s on your mind…</string>
+    <string name="save_entry">Save Entry</string>
+
+    <!-- Profile Screen -->
+    <string name="account_settings">Account Settings</string>
+    <string name="app_settings">App Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="reminder_settings">Daily Reminder</string>
+    <string name="language_settings">Language</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_indonesian" translatable="false">Indonesia</string>
+    <string name="support_feedback">Feedback &amp; Support</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="report_bug">Report Bug</string>
+    <string name="about_app">About the App</string>
+    <string name="contact_developer">Contact Developer</string>
+    <string name="member_since">Member since</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="reminder_set_success">Reminder set to %s</string>
+    <string name="reminder_set_cancel">Reminder disabled successfully</string>
+
+    <string-array name="language_options">
+        <item>English (US)</item>
+        <item>Indonesian</item>
+    </string-array>
+
+    <!-- Notification Screen -->
+    <string name="read_all">Read all</string>
+    <string name="delete_all">Delete all</string>
+    <string name="no_notifications">No notifications yet</string>
+    <string name="no_notifications_desc">When you get notifications, they will appear here</string>
+
+    <!-- Authentication -->
+    <string name="login_failed">Login account failed</string>
+    <string name="register_failed">Register account failed</string>
+    <string name="user_not_found">User not found</string>
+    <string name="user_exists">User already exists</string>
+    <string name="wrong_password">Incorrect password</string>
+    <string name="network_error">Network connection error</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="generic_error">Something went wrong, please try again</string>
+    <string name="google_signin_failed">Google sign-in failed</string>
+    <string name="google_auth_failed">Authentication with Google failed</string>
+    <string name="google_canceled">Google sign-in was canceled</string>
+    <string name="user_not_authenticated">User not authenticated, please login again</string>
+
+    <!--  About Screen  -->
+    <string name="about_version">Version %s</string>
+    <string name="about_copyright" translatable="false">\u00A9 %s %s</string>
+
+    <!--  Feedback Screen  -->
+    <string name="feedback_title">Send Feedback</string>
+    <string name="feedback_description">We value your feedback! Please let us know your thoughts, suggestions, or issues below.</string>
+    <string name="feedback_hint">Type your feedback here…</string>
+    <string name="feedback_send">Send</string>
+    <string name="feedback_sent">Thank you for your feedback!</string>
+    <string name="feedback_subject" translatable="false">Reflect App Feedback</string>
+
+    <!--  Report Bug Screen  -->
+    <string-array name="bug_categories">
+        <item>UI Bug</item>
+        <item>Crash</item>
+        <item>Performance</item>
+        <item>Data Issue</item>
+        <item>Other</item>
+    </string-array>
+    <string name="report_bug_title">Report a Bug</string>
+    <string name="report_bug_description">Describe the issue you encountered below. Your feedback helps us improve the app.</string>
+    <string name="bug_description_label">Bug Description</string>
+    <string name="bug_category_label">Bug Category</string>
+    <string name="send_report">Send Report</string>
+    <string name="report_sent">Thank you! Your bug report has been sent.</string>
+    <string name="report_subject">Bug Report - Reflect</string>
+    <string name="report_email_body_opening" translatable="false">Hi Reflect Team,%0D%0A%0D%0AI would like to report a bug:</string>
+    <string name="report_email_body_closing" translatable="false">%0D%0A%0D%0AThank you for your attention.%0D%0A(This report was sent anonymously via the app.)</string>
+
+    <!--  Notification  -->
+    <string name="notification_denied">Notification permission denied. You will not receive daily reminders, weekly statistics, etc.</string>
+    <string name="error_load_notifications">Failed to load notifications. Please try again.</string>
+    <string name="error_delete_notification">Failed to delete notification. Please try again.</string>
+    <string name="error_mark_all_notification">Failed to mark all notifications. Please try again.</string>
+    <string name="error_mark_notification">Failed to mark notification. Please try again.</string>
+
+    <!--  Reminder Notification  -->
+    <string name="reminder_channel" translatable="false">reminder_channel</string>
+    <string name="reminder_channel_name">Daily Reminder</string>
+    <string name="reminder_channel_desc" translatable="false">Channel for daily reminder</string>
+    <string name="reminder_notification_title">Daily Reminder</string>
+    <string-array name="reminder_notification_descriptions">
+        <item>Don’t forget to record your mood today!</item>
+        <item>How are you feeling? Log your mood now.</item>
+        <item>Take a moment to reflect and track your emotions.</item>
+        <item>Your daily mood entry helps you grow. Record it today!</item>
+        <item>Stay mindful—add your mood for today in Reflect.</item>
+        <item>Reflect on your day and capture your feelings now.</item>
+        <item>Every mood matters—share yours today.</item>
+        <item>Jot down your emotions and see your progress.</item>
+        <item>Keep your emotional journey going—log your mood.</item>
+        <item>One entry a day brings you closer to self-awareness.</item>
+    </string-array>
+
+    <!--  Monthly Summary Notification  -->
+    <string name="monthly_summary_channel" translatable="false">monthly_summary_channel</string>
+    <string name="monthly_summary_channel_name">Monthly Summary</string>
+    <string name="monthly_summary_channel_desc" translatable="false">Channel for monthly summary</string>
+    <string name="monthly_summary_notification_title">Monthly Summary</string>
+    <string name="monthly_summary_notification_desc">Your monthly summary for %s is ready! Check out your emotional trends and insights.</string>
+
+    <!--  Weekly Summary Notification  -->
+    <string name="weekly_summary_channel" translatable="false">weekly_summary_channel</string>
+    <string name="weekly_summary_channel_name">Weekly Summary</string>
+    <string name="weekly_summary_channel_desc" translatable="false">Channel for weekly summary</string>
+    <string name="weekly_summary_notification_title">Weekly Summary</string>
+    <string name="weekly_summary_notification_desc">Your weekly summary is here! Discover your emotional highlights and insights now.</string>
+</resources>
