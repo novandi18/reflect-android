@@ -214,7 +214,7 @@ fun MoodEntryScreen(
                     value = form.moodLevel.toFloat(),
                     onValueChange = { viewModel.updateMoodLevel(it.toInt()) },
                     valueRange = 1f..10f,
-                    steps = 8,
+                    steps = 9,
                     modifier = Modifier.fillMaxWidth(),
                     colors = SliderDefaults.colors(
                         activeTrackColor = Green,
