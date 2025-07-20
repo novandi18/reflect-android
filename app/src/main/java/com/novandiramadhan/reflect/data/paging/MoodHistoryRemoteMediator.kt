@@ -1,5 +1,6 @@
 package com.novandiramadhan.reflect.data.paging
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -53,7 +54,7 @@ class MoodHistoryRemoteMediator(
                     MoodHistoryEntity(
                         documentId = doc.id,
                         mood = it.mood,
-                        moodLevel = it.moodLevel,
+                        moodLevel = doc.getLong("mood_level")?.toInt() ?: 1,
                         triggers = it.triggers,
                         tags = it.tags,
                         note = it.note,
