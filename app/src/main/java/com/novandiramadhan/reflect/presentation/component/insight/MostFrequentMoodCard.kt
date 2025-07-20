@@ -99,8 +99,8 @@ fun MostFrequentMoodCard(
                     )
                 }
             } else if (data != null) {
-                val iconTint = getMoodColor(data.mood, context)
-                val icon = getMoodIcon(data.mood, context)
+                val iconTint = getMoodColor(data.mood, context, true)
+                val icon = getMoodIcon(data.mood, context, true)
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),

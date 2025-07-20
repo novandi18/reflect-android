@@ -101,6 +101,22 @@ fun getMoodColor(mood: String, context: Context, englishOnly: Boolean = false): 
     }
 }
 
+fun getMoodColorByLevel(moodLevel: Int): Color {
+    return when (moodLevel) {
+        1 -> Red
+        2 -> Pink
+        3 -> Purple
+        4 -> Orange
+        5 -> Amber
+        6 -> BlueGray
+        7 -> Blue
+        8 -> Teal
+        9 -> Green
+        10 -> LightGreen
+        else -> Blue
+    }
+}
+
 fun String.toTitleCase(): String {
     return split(" ").joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
 }

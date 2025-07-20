@@ -33,9 +33,8 @@ import androidx.compose.ui.unit.dp
 import com.novandiramadhan.reflect.R
 import com.novandiramadhan.reflect.presentation.component.RButton
 import com.novandiramadhan.reflect.ui.theme.ReflectTheme
-import com.novandiramadhan.reflect.ui.theme.Teal
 import com.novandiramadhan.reflect.util.getAverageMoodFeedback
-import com.novandiramadhan.reflect.util.getMoodAverageLevelColor
+import com.novandiramadhan.reflect.util.getMoodColorByLevel
 import java.util.Locale
 
 @Composable
@@ -113,13 +112,13 @@ fun AverageMoodLevelCard(
                     Box(
                         modifier = Modifier
                             .size(48.dp)
-                            .background(Teal.copy(alpha = 0.15f), CircleShape),
+                            .background(getMoodColorByLevel(moodLevel.toInt()).copy(alpha = 0.15f), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
                             imageVector = Icons.Default.BarChart,
                             contentDescription = null,
-                            tint = Teal,
+                            tint = getMoodColorByLevel(moodLevel.toInt()),
                             modifier = Modifier.size(28.dp)
                         )
                     }
@@ -134,7 +133,7 @@ fun AverageMoodLevelCard(
                                 text = String.format(Locale.getDefault(), "%.1f", moodLevel),
                                 style = MaterialTheme.typography.headlineMedium,
                                 fontWeight = FontWeight.Bold,
-                                color = getMoodAverageLevelColor(moodLevel)
+                                color = getMoodColorByLevel(moodLevel.toInt())
                             )
 
                             Spacer(modifier = Modifier.width(4.dp))

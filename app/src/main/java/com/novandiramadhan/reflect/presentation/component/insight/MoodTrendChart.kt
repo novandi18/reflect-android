@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -48,9 +49,7 @@ import com.novandiramadhan.reflect.util.isSameDay
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import com.novandiramadhan.reflect.ui.theme.Blue
-import com.novandiramadhan.reflect.ui.theme.LightGreen
-import com.novandiramadhan.reflect.ui.theme.Orange
+import com.novandiramadhan.reflect.util.getMoodColorByLevel
 import ir.ehsannarmani.compose_charts.ColumnChart
 import ir.ehsannarmani.compose_charts.models.BarProperties
 import ir.ehsannarmani.compose_charts.models.Bars
@@ -73,6 +72,7 @@ fun MoodTrendChart(
     onToggleYearDropdown: (Boolean) -> Unit = {},
     onRetry: () -> Unit = {}
 ) {
+    val context = LocalContext.current
     val currentCalendar = Calendar.getInstance()
     val currentYear = currentCalendar.get(Calendar.YEAR)
     val availableYears = listOf(currentYear, currentYear - 1, currentYear - 2)
@@ -121,11 +121,11 @@ fun MoodTrendChart(
                     Bars.Data(
                         label = dayData.mood,
                         value = dayData.moodLevel.toDouble(),
-                        color = when (dayData.moodLevel) {
-                            in 1..3 -> Brush.verticalGradient(listOf(Orange, Orange))
-                            in 4..7 -> Brush.verticalGradient(listOf(Blue, Blue))
-                            in 8..10 -> Brush.verticalGradient(listOf(LightGreen, LightGreen))
-                            else -> Brush.verticalGradient(listOf(Color.Gray, Color.DarkGray))
+                        color = if (dayData.moodLevel > 0) {
+                            val moodColor = getMoodColorByLevel(dayData.moodLevel)
+                            Brush.verticalGradient(listOf(moodColor, moodColor))
+                        } else {
+                            Brush.verticalGradient(listOf(Color.Gray, Color.DarkGray))
                         }
                     )
                 )
@@ -402,7 +402,7 @@ fun MoodTrendChart(
                                 enabled = false
                             ),
                             indicatorProperties = HorizontalIndicatorProperties(
-                                count = IndicatorCount.CountBased(10),
+                                count = IndicatorCount.CountBased(11),
                                 padding = 8.dp,
                                 contentBuilder = { value -> value.toInt().toString() },
                                 textStyle = TextStyle(

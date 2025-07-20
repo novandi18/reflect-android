@@ -20,44 +20,57 @@ fun DrawScope.drawGridLines(maxHeight: Float) {
 }
 
 fun generateWeeksForYear(year: Int): List<WeekData> {
+    val weeks = mutableListOf<WeekData>()
     val calendar = Calendar.getInstance()
-    calendar.set(Calendar.YEAR, year)
-    calendar.set(Calendar.MONTH, Calendar.JANUARY)
-    calendar.set(Calendar.DAY_OF_MONTH, 1)
-    calendar.set(Calendar.HOUR_OF_DAY, 0)
-    calendar.set(Calendar.MINUTE, 0)
-    calendar.set(Calendar.SECOND, 0)
+
+    // Start from January 1st of the year
+    calendar.set(year, Calendar.JANUARY, 1, 0, 0, 0)
     calendar.set(Calendar.MILLISECOND, 0)
 
-    // Find the first day of the first week
-    val firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-    if (firstDayOfWeek != Calendar.SUNDAY) {
-        calendar.add(Calendar.DAY_OF_MONTH, -(firstDayOfWeek - Calendar.SUNDAY))
+    // Find first Monday of the year (or last Monday of previous year)
+    val currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+    val daysFromMonday = when (currentDayOfWeek) {
+        Calendar.SUNDAY -> 6
+        Calendar.MONDAY -> 0
+        Calendar.TUESDAY -> 1
+        Calendar.WEDNESDAY -> 2
+        Calendar.THURSDAY -> 3
+        Calendar.FRIDAY -> 4
+        Calendar.SATURDAY -> 5
+        else -> 0
     }
 
-    val weeks = mutableListOf<WeekData>()
+    calendar.add(Calendar.DAY_OF_YEAR, -daysFromMonday)
+
     var weekNumber = 1
-
-    // Create end of year calendar
-    val endOfYear = Calendar.getInstance()
-    endOfYear.set(Calendar.YEAR, year)
-    endOfYear.set(Calendar.MONTH, Calendar.DECEMBER)
-    endOfYear.set(Calendar.DAY_OF_MONTH, 31)
-    endOfYear.set(Calendar.HOUR_OF_DAY, 23)
-    endOfYear.set(Calendar.MINUTE, 59)
-    endOfYear.set(Calendar.SECOND, 59)
-
-    // Generate all weeks for the entire year
-    while (!calendar.after(endOfYear)) {
+    while (calendar.get(Calendar.YEAR) <= year) {
         val startDate = calendar.time
 
-        calendar.add(Calendar.DAY_OF_MONTH, 6)
+        // Move to Sunday (end of week)
+        calendar.add(Calendar.DAY_OF_YEAR, 6)
+        calendar.set(Calendar.HOUR_OF_DAY, 23)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
         val endDate = calendar.time
 
-        weeks.add(WeekData(weekNumber, startDate, endDate))
+        weeks.add(WeekData(
+            weekNumber = weekNumber,
+            startDate = startDate,
+            endDate = endDate
+        ))
 
-        calendar.add(Calendar.DAY_OF_MONTH, 1)
+        // Move to next Monday
+        calendar.add(Calendar.DAY_OF_YEAR, 1)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+
         weekNumber++
+
+        // Stop if we've moved past the target year
+        if (calendar.get(Calendar.YEAR) > year) break
     }
 
     return weeks

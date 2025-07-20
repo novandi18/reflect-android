@@ -142,9 +142,9 @@ fun EntryStreakCard(
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
-                            repeat(totalDays) { day ->
-                                val isActive = day < 7
-                                val color = if (isActive) LightGreen else MaterialTheme.colorScheme.surfaceVariant
+                            repeat(7) { day ->
+                                val isActive = day < totalDays
+                                val color = if (isActive) LightGreen else LightGreen.copy(alpha = 0.3f)
                                 Box(
                                     modifier = Modifier
                                         .weight(1f)
