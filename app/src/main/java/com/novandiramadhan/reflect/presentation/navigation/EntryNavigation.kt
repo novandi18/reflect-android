@@ -7,6 +7,10 @@ import com.novandiramadhan.reflect.presentation.screen.MoodEntryScreen
 
 fun NavGraphBuilder.entryGraph(navController: NavController) {
     composable<Destinations.MoodEntry> {
-        MoodEntryScreen()
+        MoodEntryScreen(
+            onNavigateBack = {
+                navController.navigateUp()
+            }
+        )
     }
 }
