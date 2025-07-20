@@ -23,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -43,6 +44,8 @@ fun MostFrequentMoodCard(
     isError: Boolean = false,
     onRetry: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -96,8 +99,8 @@ fun MostFrequentMoodCard(
                     )
                 }
             } else if (data != null) {
-                val iconTint = getMoodColor(data.mood)
-                val icon = getMoodIcon(data.mood)
+                val iconTint = getMoodColor(data.mood, context)
+                val icon = getMoodIcon(data.mood, context)
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),

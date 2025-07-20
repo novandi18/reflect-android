@@ -31,34 +31,40 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-fun getMoodIcon(mood: String): ImageVector {
-    return when (mood.toTitleCase()) {
-        "Very Sad" -> Icons.Default.SentimentVeryDissatisfied
-        "Sad" -> Icons.Default.MoodBad
-        "Disappointed" -> Icons.Default.ThumbDown
-        "Uncomfortable" -> Icons.Default.SentimentDissatisfied
-        "Okay" -> Icons.Default.SentimentSatisfied
-        "Pretty Good" -> Icons.Default.Face
-        "Good" -> Icons.Default.TagFaces
-        "Happy" -> Icons.Default.SentimentSatisfiedAlt
-        "Very Happy" -> Icons.Default.SentimentVerySatisfied
-        "Joyful" -> Icons.Default.Mood
+fun getMoodIcon(mood: String, context: Context): ImageVector {
+    val moodLevels = context.resources.getStringArray(R.array.mood_levels)
+    val moodIndex = moodLevels.indexOf(mood)
+
+    return when (moodIndex) {
+        0 -> Icons.Default.SentimentVeryDissatisfied
+        1 -> Icons.Default.MoodBad
+        2 -> Icons.Default.ThumbDown
+        3 -> Icons.Default.SentimentDissatisfied
+        4 -> Icons.Default.SentimentSatisfied
+        5 -> Icons.Default.Face
+        6 -> Icons.Default.TagFaces
+        7 -> Icons.Default.SentimentSatisfiedAlt
+        8 -> Icons.Default.SentimentVerySatisfied
+        9 -> Icons.Default.Mood
         else -> Icons.Default.Face
     }
 }
 
-fun getMoodColor(mood: String): Color {
-    return when (mood.toTitleCase()) {
-        "Joyful" -> LightGreen
-        "Very Happy" -> Green
-        "Happy" -> Teal
-        "Good" -> Blue
-        "Pretty Good" -> BlueGray
-        "Okay" -> Amber
-        "Uncomfortable" -> Orange
-        "Disappointed" -> Purple
-        "Sad" -> Pink
-        "Very Sad" -> Red
+fun getMoodColor(mood: String, context: Context): Color {
+    val moodLevels = context.resources.getStringArray(R.array.mood_levels)
+    val moodIndex = moodLevels.indexOf(mood)
+
+    return when (moodIndex) {
+        0 -> Red
+        1 -> Pink
+        2 -> Purple
+        3 -> Orange
+        4 -> Amber
+        5 -> BlueGray
+        6 -> Blue
+        7 -> Teal
+        8 -> Green
+        9 -> LightGreen
         else -> Blue
     }
 }

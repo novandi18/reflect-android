@@ -15,13 +15,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.Timestamp
 import com.novandiramadhan.reflect.R
 import com.novandiramadhan.reflect.ui.theme.ReflectTheme
-import com.novandiramadhan.reflect.util.getMoodColor
 import com.novandiramadhan.reflect.util.getMoodIcon
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -33,6 +33,7 @@ fun MoodCard(
     timestamp: Timestamp?,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     val hasData = mood != null && moodLevel != null && timestamp != null
 
     val formattedTime = if (hasData) {
@@ -67,7 +68,7 @@ fun MoodCard(
                 ) {
                     if (mood != null) {
                         Icon(
-                            imageVector = getMoodIcon(mood),
+                            imageVector = getMoodIcon(mood, context),
                             contentDescription = null,
                             tint = getMoodColor(mood),
                             modifier = Modifier

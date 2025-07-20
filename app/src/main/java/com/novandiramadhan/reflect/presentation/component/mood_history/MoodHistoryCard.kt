@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -46,6 +47,8 @@ fun MoodHistoryCard(
     onClick: () -> Unit = {},
     onDelete: () -> Unit = {},
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -95,7 +98,7 @@ fun MoodHistoryCard(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val moodColor = getMoodColor(journal.mood)
+                    val moodColor = getMoodColor(journal.mood, context)
 
                     Box(
                         modifier = Modifier
@@ -104,7 +107,7 @@ fun MoodHistoryCard(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = getMoodIcon(journal.mood),
+                            imageVector = getMoodIcon(journal.mood, context),
                             contentDescription = null,
                             tint = moodColor,
                             modifier = Modifier.size(20.dp)

@@ -39,9 +39,9 @@ fun MoodSelector(
     val moods = (1..10).map { level ->
         MoodOption(
             level = level,
-            icon = getMoodIcon(moodLabels[level - 1]),
+            icon = getMoodIcon(moodLabels[level - 1], context),
             label = moodLabels[level - 1],
-            color = getMoodColor(moodLabels[level - 1])
+            color = getMoodColor(moodLabels[level - 1], context)
         )
     }
 
