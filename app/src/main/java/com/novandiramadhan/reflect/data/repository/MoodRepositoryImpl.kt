@@ -251,7 +251,11 @@ class MoodRepositoryImpl @Inject constructor(
 
             val moodCounts = moodList.groupingBy { it.mood }.eachCount()
             val total = moodList.size.toFloat()
-            val moodDistribution = moodCounts.mapValues { it.value / total }
+            val moodDistribution = moodCounts
+                .mapValues { it.value / total }
+                .toList()
+                .sortedByDescending { it.second }
+                .toMap(LinkedHashMap())
             val dominantMood = moodCounts.maxByOrNull { it.value }?.key ?: "-"
             val activeDays = moodList.map {
                 val cal = Calendar.getInstance()
