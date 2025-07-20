@@ -9,6 +9,7 @@ import com.novandiramadhan.reflect.data.resource.Resource
 import com.novandiramadhan.reflect.domain.model.Notification
 import com.novandiramadhan.reflect.domain.model.NotificationType
 import com.novandiramadhan.reflect.domain.usecase.MoodUseCase
+import com.novandiramadhan.reflect.domain.usecase.NotificationUseCase
 import com.novandiramadhan.reflect.domain.usecase.UserUseCase
 import com.novandiramadhan.reflect.notification.manager.MonthlySummaryNotificationManager
 import com.novandiramadhan.reflect.util.getCurrentMonthRange
@@ -30,6 +31,9 @@ class MonthlySummaryReceiver : BroadcastReceiver() {
     @Inject
     lateinit var userUseCase: UserUseCase
 
+    @Inject
+    lateinit var notificationUseCase: NotificationUseCase
+
     override fun onReceive(context: Context?, intent: Intent?) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -45,6 +49,7 @@ class MonthlySummaryReceiver : BroadcastReceiver() {
                         monthlyStats is Resource.Success && monthlyStats.data != null -> {
                             val stats = monthlyStats.data
                             Notification(
+                                id = "monthly_${System.currentTimeMillis()}", // Generate unique ID
                                 title = context?.getString(R.string.monthly_summary_notification_title)
                                     ?: "Monthly Summary",
                                 message = "Dominant mood: ${stats.dominantMood}. Active days: ${stats.activeDays}",
@@ -54,6 +59,7 @@ class MonthlySummaryReceiver : BroadcastReceiver() {
                         }
                         else -> {
                             Notification(
+                                id = "monthly_${System.currentTimeMillis()}", // Generate unique ID
                                 title = context?.getString(R.string.monthly_summary_notification_title)
                                     ?: "Monthly Summary",
                                 message = context?.getString(R.string.monthly_summary_notification_desc)
@@ -63,6 +69,11 @@ class MonthlySummaryReceiver : BroadcastReceiver() {
                             )
                         }
                     }
+
+                    // Simpan ke Firestore + Room
+                    notificationUseCase.insertNotification(currentUser.data.id, notification).collect{}
+
+                    // Tampilkan notifikasi
                     notificationManager.showNotification(notification)
                 }
             } catch (e: Exception) {

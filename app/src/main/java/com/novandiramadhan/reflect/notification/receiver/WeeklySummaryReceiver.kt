@@ -9,6 +9,7 @@ import com.novandiramadhan.reflect.data.resource.Resource
 import com.novandiramadhan.reflect.domain.model.Notification
 import com.novandiramadhan.reflect.domain.model.NotificationType
 import com.novandiramadhan.reflect.domain.usecase.MoodUseCase
+import com.novandiramadhan.reflect.domain.usecase.NotificationUseCase
 import com.novandiramadhan.reflect.domain.usecase.UserUseCase
 import com.novandiramadhan.reflect.notification.manager.WeeklySummaryNotificationManager
 import com.novandiramadhan.reflect.util.getCurrentWeekRange
@@ -30,6 +31,9 @@ class WeeklySummaryReceiver : BroadcastReceiver() {
     @Inject
     lateinit var userRepository: UserUseCase
 
+    @Inject
+    lateinit var notificationRepository: NotificationUseCase
+
     override fun onReceive(context: Context?, intent: Intent?) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -45,6 +49,7 @@ class WeeklySummaryReceiver : BroadcastReceiver() {
                         weeklyStats is Resource.Success && weeklyStats.data != null -> {
                             val stats = weeklyStats.data
                             Notification(
+                                id = "weekly_${System.currentTimeMillis()}",
                                 title = context?.getString(R.string.weekly_summary_notification_title)
                                     ?: "Weekly Summary",
                                 message = "Dominant mood: ${stats.dominantMood}. Active days: ${stats.activeDays}/7",
@@ -54,15 +59,19 @@ class WeeklySummaryReceiver : BroadcastReceiver() {
                         }
                         else -> {
                             Notification(
+                                id = "weekly_${System.currentTimeMillis()}",
                                 title = context?.getString(R.string.weekly_summary_notification_title)
                                     ?: "Weekly Summary",
                                 message = context?.getString(R.string.weekly_summary_notification_desc)
-                                    ?: "Your weekly summary is here! Discover your emotional highlights and insights now.",
+                                    ?: "Your weekly summary is here!",
                                 type = NotificationType.INSIGHT_UPDATE.value,
                                 timestamp = Timestamp.now()
                             )
                         }
                     }
+
+                    notificationRepository.insertNotification(currentUser.data.id, notification).collect{}
+
                     notificationManager.showNotification(notification)
                 }
             } catch (e: Exception) {
