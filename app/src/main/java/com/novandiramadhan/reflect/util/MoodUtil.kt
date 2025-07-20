@@ -80,19 +80,36 @@ fun Timestamp.isToday(): Boolean {
 }
 
 fun getCurrentWeekRange(): Pair<Date, Date> {
-    // Calculate current week's Monday and Sunday
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = System.currentTimeMillis()
+
+    val currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+
+    val daysFromMonday = when (currentDayOfWeek) {
+        Calendar.SUNDAY -> 6
+        Calendar.MONDAY -> 0
+        Calendar.TUESDAY -> 1
+        Calendar.WEDNESDAY -> 2
+        Calendar.THURSDAY -> 3
+        Calendar.FRIDAY -> 4
+        Calendar.SATURDAY -> 5
+        else -> 0
+    }
+
+    calendar.add(Calendar.DAY_OF_YEAR, -daysFromMonday)
     calendar.set(Calendar.HOUR_OF_DAY, 0)
     calendar.set(Calendar.MINUTE, 0)
     calendar.set(Calendar.SECOND, 0)
     calendar.set(Calendar.MILLISECOND, 0)
-    // Set to Monday
-    calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
     val startOfWeek = calendar.time
-    // Set to Sunday
-    calendar.add(Calendar.DAY_OF_WEEK, 6)
+
+    calendar.add(Calendar.DAY_OF_YEAR, 6)
+    calendar.set(Calendar.HOUR_OF_DAY, 23)
+    calendar.set(Calendar.MINUTE, 59)
+    calendar.set(Calendar.SECOND, 59)
+    calendar.set(Calendar.MILLISECOND, 999)
     val endOfWeek = calendar.time
+
     return Pair(startOfWeek, endOfWeek)
 }
 

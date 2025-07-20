@@ -217,7 +217,10 @@ class MoodRepositoryImpl @Inject constructor(
                     triggers = it.triggers,
                     tags = it.tags,
                     note = it.note,
-                    createdAt = Timestamp(it.createdAt / 1000, ((it.createdAt % 1000) * 1000000).toInt())
+                    createdAt = Timestamp(
+                        it.createdAt / 1000,
+                        ((it.createdAt % 1000) * 1000000).toInt()
+                    )
                 )
             } ?: run {
                 try {
