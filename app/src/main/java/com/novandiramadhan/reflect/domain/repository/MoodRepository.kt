@@ -3,6 +3,7 @@ package com.novandiramadhan.reflect.domain.repository
 import com.google.firebase.Timestamp
 import com.novandiramadhan.reflect.data.resource.Resource
 import com.novandiramadhan.reflect.domain.model.Journal
+import com.novandiramadhan.reflect.domain.model.MonthlyStats
 import com.novandiramadhan.reflect.domain.model.MoodTrendData
 import com.novandiramadhan.reflect.domain.model.MostFrequentMood
 import com.novandiramadhan.reflect.domain.model.Quote
@@ -22,4 +23,8 @@ interface MoodRepository {
     fun getMoodTrendInWeek(userId: String, week: WeekData): Flow<Resource<List<MoodTrendData>>>
     fun getEntryStreakInWeek(userId: String): Flow<Resource<Int>>
     fun getTopTriggersInWeek(userId: String): Flow<Resource<List<String>>>
+    fun getMonthlyStats(
+        userId: String,
+        rangeDate: Pair<Timestamp, Timestamp>
+    ): Flow<Resource<MonthlyStats?>>
 }

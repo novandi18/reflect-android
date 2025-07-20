@@ -16,6 +16,7 @@ import com.novandiramadhan.reflect.data.resource.NetworkOnlyResource
 import com.novandiramadhan.reflect.data.resource.Resource
 import com.novandiramadhan.reflect.domain.datastore.MoodDataStore
 import com.novandiramadhan.reflect.domain.model.Journal
+import com.novandiramadhan.reflect.domain.model.MonthlyStats
 import com.novandiramadhan.reflect.domain.model.MoodTrendData
 import com.novandiramadhan.reflect.domain.model.MostFrequentMood
 import com.novandiramadhan.reflect.domain.model.Quote
@@ -609,6 +610,56 @@ class MoodRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             e.printStackTrace()
             emit(Resource.Error(context.getString(R.string.error_top_triggers_default)))
+        }
+    }
+
+    override fun getMonthlyStats(
+        userId: String,
+        rangeDate: Pair<Timestamp, Timestamp>
+    ): Flow<Resource<MonthlyStats?>> = flow {
+        emit(Resource.Loading())
+        try {
+            val snapshot = firestore.collection(FirestoreCollections.USERS)
+                .document(userId)
+                .collection(FirestoreCollections.SubCollections.JOURNAL_ENTRIES)
+                .whereGreaterThanOrEqualTo("createdAt", rangeDate.first)
+                .whereLessThanOrEqualTo("createdAt", rangeDate.second)
+                .get()
+                .await()
+
+            val moodList = snapshot.documents.mapNotNull { it.toObject(Journal::class.java) }
+
+            if (moodList.isEmpty()) {
+                emit(Resource.Success(null))
+                return@flow
+            }
+
+            val moodCounts = moodList.groupingBy { it.mood }.eachCount()
+            val total = moodList.size.toFloat()
+            val moodDistribution = moodCounts
+                .mapValues { it.value / total }
+                .toList()
+                .sortedByDescending { it.second }
+                .toMap(LinkedHashMap())
+            val dominantMood = moodCounts.maxByOrNull { it.value }?.key ?: "-"
+            val activeDays = moodList.map {
+                val cal = Calendar.getInstance()
+                cal.time = it.createdAt.toDate()
+                "${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)}-${cal.get(Calendar.DAY_OF_MONTH)}"
+            }.distinct().count()
+
+            emit(
+                Resource.Success(
+                    MonthlyStats(
+                        dominantMood = dominantMood,
+                        activeDays = activeDays,
+                        moodDistribution = moodDistribution
+                    )
+                )
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(Resource.Error(context.getString(R.string.generic_error)))
         }
     }
 }

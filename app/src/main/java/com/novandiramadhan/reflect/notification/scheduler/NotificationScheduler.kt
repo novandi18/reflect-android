@@ -131,13 +131,14 @@ class NotificationScheduler @Inject constructor(
 
         val calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
-            set(Calendar.DAY_OF_MONTH, 1)
-            set(Calendar.HOUR_OF_DAY, 10)
+            set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
+            set(Calendar.HOUR_OF_DAY, 22)
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
+
             if (timeInMillis <= System.currentTimeMillis()) {
-                add(Calendar.MONTH, 1)
+                add(Calendar.WEEK_OF_YEAR, 1)
             }
         }
 
@@ -145,18 +146,20 @@ class NotificationScheduler @Inject constructor(
             return when {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                     if (alarmManager.canScheduleExactAlarms()) {
-                        alarmManager.setExactAndAllowWhileIdle(
+                        alarmManager.setRepeating(
                             AlarmManager.RTC_WAKEUP,
                             calendar.timeInMillis,
+                            AlarmManager.INTERVAL_DAY * 7,
                             pendingIntent
                         )
                         true
                     } else false
                 }
                 else -> {
-                    alarmManager.setExactAndAllowWhileIdle(
+                    alarmManager.setRepeating(
                         AlarmManager.RTC_WAKEUP,
                         calendar.timeInMillis,
+                        AlarmManager.INTERVAL_DAY * 7,
                         pendingIntent
                     )
                     true

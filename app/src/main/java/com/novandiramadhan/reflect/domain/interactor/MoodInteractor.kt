@@ -3,6 +3,7 @@ package com.novandiramadhan.reflect.domain.interactor
 import com.google.firebase.Timestamp
 import com.novandiramadhan.reflect.data.resource.Resource
 import com.novandiramadhan.reflect.domain.model.Journal
+import com.novandiramadhan.reflect.domain.model.MonthlyStats
 import com.novandiramadhan.reflect.domain.model.MoodTrendData
 import com.novandiramadhan.reflect.domain.model.MostFrequentMood
 import com.novandiramadhan.reflect.domain.model.Quote
@@ -47,4 +48,11 @@ class MoodInteractor @Inject constructor(
 
     override fun getTopTriggersInWeek(userId: String): Flow<Resource<List<String>>> =
         moodRepository.getTopTriggersInWeek(userId)
+
+    override fun getMonthlyStats(
+        userId: String,
+        rangeDate: Pair<Timestamp, Timestamp>
+    ): Flow<Resource<MonthlyStats?>> {
+        return moodRepository.getMonthlyStats(userId, rangeDate)
+    }
 }

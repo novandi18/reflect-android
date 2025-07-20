@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import com.novandiramadhan.reflect.R
 import com.novandiramadhan.reflect.domain.datastore.SettingDataStore
@@ -14,6 +15,7 @@ import com.novandiramadhan.reflect.domain.datastore.UserDataStore
 import com.novandiramadhan.reflect.domain.datastore.WelcomeDataStore
 import com.novandiramadhan.reflect.domain.model.Setting
 import com.novandiramadhan.reflect.domain.model.User
+import com.novandiramadhan.reflect.notification.scheduler.NotificationScheduler
 import com.novandiramadhan.reflect.presentation.navigation.Destinations
 import com.novandiramadhan.reflect.ui.theme.ReflectTheme
 import com.novandiramadhan.reflect.util.NotificationPermissionUtil
@@ -30,6 +32,9 @@ class MainActivity : ComponentActivity() {
 
     @Inject
     lateinit var settingDataStore: SettingDataStore
+
+    @Inject
+    lateinit var notificationScheduler: NotificationScheduler
 
     private lateinit var notificationPermissionLauncher: ActivityResultLauncher<String>
 
@@ -60,6 +65,13 @@ class MainActivity : ComponentActivity() {
                 else -> Destinations.Home
             }
 
+            LaunchedEffect(userState.id) {
+                if (userState.id.isNotEmpty()) {
+                    enableWeeklyNotifications()
+                    enableMonthlyNotifications()
+                }
+            }
+
             if (startDestination == Destinations.Home && !NotificationPermissionUtil.hasNotificationPermission(this)) {
                 NotificationPermissionUtil.requestNotificationPermission(
                     this,
@@ -73,6 +85,26 @@ class MainActivity : ComponentActivity() {
                 ReflectApp(
                     startDestination = startDestination
                 )
+            }
+        }
+    }
+
+    private fun enableWeeklyNotifications() {
+        if (NotificationPermissionUtil.hasNotificationPermission(this)) {
+            try {
+                notificationScheduler.scheduleWeeklySummary()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun enableMonthlyNotifications() {
+        if (NotificationPermissionUtil.hasNotificationPermission(this)) {
+            try {
+                notificationScheduler.scheduleMonthlySummary()
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
