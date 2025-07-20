@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.google.firebase.Timestamp
 import com.novandiramadhan.reflect.R
 import com.novandiramadhan.reflect.ui.theme.ReflectTheme
+import com.novandiramadhan.reflect.util.getMoodColor
 import com.novandiramadhan.reflect.util.getMoodIcon
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -68,9 +69,9 @@ fun MoodCard(
                 ) {
                     if (mood != null) {
                         Icon(
-                            imageVector = getMoodIcon(mood, context),
+                            imageVector = getMoodIcon(mood, context, true),
                             contentDescription = null,
-                            tint = getMoodColor(mood),
+                            tint = getMoodColor(mood, context, true),
                             modifier = Modifier
                                 .height(40.dp)
                                 .width(40.dp)

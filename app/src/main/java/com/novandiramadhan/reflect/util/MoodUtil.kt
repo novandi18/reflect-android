@@ -31,7 +31,23 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-fun getMoodIcon(mood: String, context: Context): ImageVector {
+fun getMoodIcon(mood: String, context: Context, englishOnly: Boolean = false): ImageVector {
+    if (englishOnly) {
+        return when (mood.lowercase()) {
+            "very sad" -> Icons.Default.SentimentVeryDissatisfied
+            "sad" -> Icons.Default.MoodBad
+            "disappointed" -> Icons.Default.ThumbDown
+            "uncomfortable" -> Icons.Default.SentimentDissatisfied
+            "okay" -> Icons.Default.SentimentSatisfied
+            "pretty good" -> Icons.Default.Face
+            "good" -> Icons.Default.TagFaces
+            "happy" -> Icons.Default.SentimentSatisfiedAlt
+            "very happy" -> Icons.Default.SentimentVerySatisfied
+            "joyful" -> Icons.Default.Mood
+            else -> Icons.Default.Face
+        }
+    }
+
     val moodLevels = context.resources.getStringArray(R.array.mood_levels)
     val moodIndex = moodLevels.indexOf(mood)
 
@@ -50,7 +66,23 @@ fun getMoodIcon(mood: String, context: Context): ImageVector {
     }
 }
 
-fun getMoodColor(mood: String, context: Context): Color {
+fun getMoodColor(mood: String, context: Context, englishOnly: Boolean = false): Color {
+    if (englishOnly) {
+        return when (mood.lowercase()) {
+            "very sad" -> Red
+            "sad" -> Pink
+            "disappointed" -> Purple
+            "uncomfortable" -> Orange
+            "okay" -> Amber
+            "pretty good" -> BlueGray
+            "good" -> Blue
+            "happy" -> Teal
+            "very happy" -> Green
+            "joyful" -> LightGreen
+            else -> Blue
+        }
+    }
+
     val moodLevels = context.resources.getStringArray(R.array.mood_levels)
     val moodIndex = moodLevels.indexOf(mood)
 

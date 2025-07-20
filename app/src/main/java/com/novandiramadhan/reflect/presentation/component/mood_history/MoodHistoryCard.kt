@@ -97,7 +97,7 @@ fun MoodHistoryCard(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val moodColor = getMoodColor(journal.mood, context)
+                    val moodColor = getMoodColor(journal.mood, context, true)
 
                     Box(
                         modifier = Modifier

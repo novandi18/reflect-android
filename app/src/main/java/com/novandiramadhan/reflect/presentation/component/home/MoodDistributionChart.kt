@@ -12,19 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.novandiramadhan.reflect.ui.theme.Amber
-import com.novandiramadhan.reflect.ui.theme.BlueGray
-import com.novandiramadhan.reflect.ui.theme.LightGreen
-import com.novandiramadhan.reflect.ui.theme.Teal
+import com.novandiramadhan.reflect.util.getMoodColor
 
 @Composable
 fun MoodDistributionChart(
     moodDistribution: Map<String, Float>,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+
     Column(
         modifier = modifier.fillMaxWidth()
     ) {
@@ -49,7 +48,7 @@ fun MoodDistributionChart(
                 LinearProgressIndicator(
                     progress = { percentage },
                     modifier = Modifier.weight(1f),
-                    color = getMoodColor(mood),
+                    color = getMoodColor(mood, context, true),
                     trackColor = MaterialTheme.colorScheme.surfaceVariant,
                 )
 
@@ -62,16 +61,5 @@ fun MoodDistributionChart(
                 )
             }
         }
-    }
-}
-
-@Composable
-fun getMoodColor(mood: String): Color {
-    return when (mood.lowercase()) {
-        "sad", "very sad", "disappointed" -> BlueGray
-        "uncomfortable", "okay" -> Amber
-        "pretty good", "good" -> LightGreen
-        "happy", "very happy", "joyful" -> Teal
-        else -> MaterialTheme.colorScheme.primary
     }
 }
