@@ -23,22 +23,33 @@ class MoodHistoryRemoteMediator(
         state: PagingState<Int, MoodHistoryEntity>
     ): MediatorResult {
         return try {
-            val pageSize = state.config.pageSize
+            val loadSize = when (loadType) {
+                LoadType.REFRESH -> state.config.initialLoadSize
+                LoadType.APPEND  -> state.config.pageSize
+                LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
+            }
+
             val lastItem = state.lastItemOrNull()
-            val query = firestore.collection(FirestoreCollections.USERS)
+
+            val baseQuery = firestore.collection(FirestoreCollections.USERS)
                 .document(userId)
                 .collection(FirestoreCollections.SubCollections.JOURNAL_ENTRIES)
                 .orderBy("createdAt", Query.Direction.DESCENDING)
-                .let {
-                    if (loadType == LoadType.REFRESH) it.limit(pageSize.toLong())
-                    else if (lastItem != null) it.startAfter(lastItem.createdAt).limit(pageSize.toLong())
-                    else it.limit(pageSize.toLong())
-                }
 
-            val snapshot = query.get().await()
+            val pageQuery = when (loadType) {
+                LoadType.REFRESH ->
+                    baseQuery.limit(loadSize.toLong())
+                LoadType.APPEND ->
+                    if (lastItem != null)
+                        baseQuery.startAfter(lastItem.createdAt).limit(loadSize.toLong())
+                    else
+                        baseQuery.limit(loadSize.toLong())
+                else -> throw IllegalStateException("Unexpected loadType $loadType")
+            }
+
+            val snapshot = pageQuery.get().await()
             val entities = snapshot.documents.mapNotNull { doc ->
-                val data = doc.toObject(Journal::class.java)
-                data?.let {
+                doc.toObject(Journal::class.java)?.let {
                     MoodHistoryEntity(
                         documentId = doc.id,
                         mood = it.mood,
@@ -53,8 +64,11 @@ class MoodHistoryRemoteMediator(
 
             if (loadType == LoadType.REFRESH) {
                 moodHistoryDao.deleteAllMoodHistory()
+                moodHistoryDao.insertAllMoodHistory(entities)
+            } else {
+                moodHistoryDao.insertAllMoodHistory(entities)
             }
-            moodHistoryDao.insertAllMoodHistory(entities)
+
             MediatorResult.Success(endOfPaginationReached = entities.isEmpty())
         } catch (e: Exception) {
             MediatorResult.Error(e)
