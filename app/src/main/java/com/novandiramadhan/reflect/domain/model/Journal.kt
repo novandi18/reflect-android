@@ -4,13 +4,10 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.PropertyName
 
 data class Journal(
-    @PropertyName("id")
-    val id: String = "",
-
     @PropertyName("mood")
     val mood: String = "",
 
-    @PropertyName("mood_level")
+//    @PropertyName("mood_level")
     val moodLevel: Int = 1,
 
     @PropertyName("triggers")
