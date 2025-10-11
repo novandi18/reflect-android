@@ -17,7 +17,7 @@ import java.util.Calendar
 import javax.inject.Inject
 
 class SummaryRepositoryImpl @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val firestore: FirebaseFirestore,
     private val monthlySummaryDao: MonthlySummaryDao,
     private val weeklySummaryDao: WeeklySummaryDao,

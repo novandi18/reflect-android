@@ -14,7 +14,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 class GoogleAuthService @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val credentialManager: CredentialManager
 ) {
     suspend fun signIn(): Result<String> {

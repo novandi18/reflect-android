@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoodEntryViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val moodUseCase: MoodUseCase,
     userDataStore: UserDataStore
 ): ViewModel() {

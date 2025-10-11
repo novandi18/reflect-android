@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Singleton
 class SettingDataStoreImpl @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ): SettingDataStore {
     override val state: Flow<Setting> = context.settingDataStore.data
         .catch { exception ->

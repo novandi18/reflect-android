@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val userDataStore: UserDataStore,
     private val userUseCase: UserUseCase,
     private val googleAuthService: GoogleAuthService

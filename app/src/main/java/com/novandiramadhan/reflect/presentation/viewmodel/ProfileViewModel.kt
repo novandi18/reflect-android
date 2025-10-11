@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val userUseCase: UserUseCase,
     private val userDataStore: UserDataStore,
     private val settingDataStore: SettingDataStore,

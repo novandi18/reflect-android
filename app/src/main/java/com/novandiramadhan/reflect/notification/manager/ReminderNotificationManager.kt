@@ -22,7 +22,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ReminderNotificationManager @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val notificationUseCase: NotificationUseCase
 ) {
     private val channelId = context.getString(R.string.reminder_channel)

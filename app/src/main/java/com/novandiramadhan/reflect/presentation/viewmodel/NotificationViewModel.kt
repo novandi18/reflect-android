@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotificationViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     userDataStore: UserDataStore,
     private val notificationUseCase: NotificationUseCase
 ) : ViewModel() {

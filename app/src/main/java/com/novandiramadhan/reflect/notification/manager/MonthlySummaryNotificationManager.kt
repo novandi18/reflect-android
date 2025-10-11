@@ -17,7 +17,7 @@ import javax.inject.Singleton
 
 @Singleton
 class MonthlySummaryNotificationManager @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) {
     private val channelId = context.getString(R.string.monthly_summary_channel)
     private val notificationId = 2

@@ -35,7 +35,7 @@ import java.util.Date
 import javax.inject.Inject
 
 class MoodRepositoryImpl @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     private val firestore: FirebaseFirestore,
     private val moodHistoryDao: MoodHistoryDao,
     private val remoteDataSource: RemoteDataSource,

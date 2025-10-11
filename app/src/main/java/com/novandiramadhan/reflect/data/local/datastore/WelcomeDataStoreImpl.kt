@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Singleton
 class WelcomeDataStoreImpl @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ): WelcomeDataStore {
     override val state: Flow<Boolean> = context.welcomeDataStore.data
         .catch { exception ->
