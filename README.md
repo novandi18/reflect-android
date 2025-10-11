@@ -1,6 +1,6 @@
 <div align="center">
   <div style="display: inline-block;">
-    <img src="path-to-reflect-logo" width="150px"/>
+    <img src="https://github.com/user-attachments/assets/dda826ce-970e-4fdd-bb4b-955e2745f3df" width="150px"/>
   </div>
   <h1 align="center">Reflect</h1>
   <h3>Your Personal Mood & Mental Health Companion</h3>
