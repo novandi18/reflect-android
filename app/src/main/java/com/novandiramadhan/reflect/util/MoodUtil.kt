@@ -117,12 +117,13 @@ fun getMoodColorByLevel(moodLevel: Int): Color {
     }
 }
 
-fun String.toTitleCase(): String {
-    return split(" ").joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
-}
-
 fun Date.formatToDisplayDay(): String {
     val formatter = SimpleDateFormat("EEEE, MMM d", Locale.getDefault())
+    return formatter.format(this)
+}
+
+fun Date.formatToDisplayTime(): String {
+    val formatter = SimpleDateFormat("HH:mm", Locale.getDefault())
     return formatter.format(this)
 }
 
