@@ -170,6 +170,8 @@
     <string name="app_settings">Pengaturan</string>
     <string name="dark_mode">Tema Gelap</string>
     <string name="reminder_settings">Pengingat Harian</string>
+    <string name="biometrics_settings">Biometrik</string>
+    <string name="biometric_set_cancel">Biometric berhasil dinonaktifkan</string>
     <string name="language_settings">Bahasa</string>
     <string name="streak_days">%s dari 7 hari</string>
     <string name="contact_developer">Kontak Pengembang Aplikasi</string>

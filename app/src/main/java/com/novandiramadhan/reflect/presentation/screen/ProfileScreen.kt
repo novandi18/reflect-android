@@ -23,7 +23,9 @@ import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Feedback
+import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Support
 import androidx.compose.material3.Button
@@ -275,7 +277,32 @@ fun ProfileScreen(
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                     SettingItem(
-                        icon = Icons.Default.Notifications,
+                        icon = Icons.Default.Fingerprint,
+                        title = stringResource(R.string.biometrics_settings)
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.End
+                        ) {
+                            Switch(
+                                modifier = Modifier.align(Alignment.End),
+                                checked = settings.reminderTime.isNotEmpty(),
+                                onCheckedChange = { isChecked ->
+                                }
+                            )
+
+                            if (settings.reminderTime.isNotEmpty()) {
+                                Text(
+                                    text = settings.reminderTime,
+                                    style = MaterialTheme.typography.bodySmall
+                                )
+                            }
+                        }
+                    }
+
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
+                    SettingItem(
+                        icon = Icons.Default.Language,
                         title = stringResource(R.string.language_settings)
                     ) {
                         if (availableLanguages.isNotEmpty()) {

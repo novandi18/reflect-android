@@ -386,6 +386,7 @@
     <string name="app_settings">App Settings</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="reminder_settings">Daily Reminder</string>
+    <string name="biometrics_settings">Biometrics</string>
     <string name="language_settings">Language</string>
     <string name="language_english" translatable="false">English</string>
     <string name="language_indonesian" translatable="false">Indonesia</string>
@@ -398,6 +399,7 @@
     <string name="sign_out">Sign Out</string>
     <string name="reminder_set_success">Reminder set to %s</string>
     <string name="reminder_set_cancel">Reminder disabled successfully</string>
+    <string name="biometric_set_cancel">Biometric disabled successfully</string>
 
     <string-array name="language_options">
         <item>English (US)</item>
