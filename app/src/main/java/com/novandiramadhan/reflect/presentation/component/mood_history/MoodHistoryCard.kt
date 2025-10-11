@@ -187,7 +187,7 @@ fun MoodHistoryCard(
 
                     triggersToShow.forEach { trigger ->
                         Surface(
-                            color = MaterialTheme.colorScheme.surfaceVariant,
+                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f),
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Text(
@@ -203,7 +203,7 @@ fun MoodHistoryCard(
                         Text(
                             text = "+${journal.triggers.size - 3}",
                             style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                             modifier = Modifier.padding(start = 4.dp, top = 4.dp)
                         )
                     }
