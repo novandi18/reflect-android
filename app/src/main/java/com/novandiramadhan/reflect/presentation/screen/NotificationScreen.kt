@@ -121,19 +121,7 @@ fun NotificationScreen(
                         val notificationEntity = notificationsPaging[index]
                         notificationEntity?.let {
                             val notification = NotificationMapper.entityToDomain(notificationEntity)
-                            val dismissState = rememberSwipeToDismissBoxState(
-                                confirmValueChange = { dismissValue ->
-                                    when (dismissValue) {
-                                        SwipeToDismissBoxValue.EndToStart -> {
-                                            coroutineScope.launch {
-                                                viewModel.deleteNotification(user.id, notification.id)
-                                            }
-                                            true
-                                        }
-                                        else -> false
-                                    }
-                                }
-                            )
+                            val dismissState = rememberSwipeToDismissBoxState()
 
                             SwipeToDismissBox(
                                 state = dismissState,
@@ -166,6 +154,12 @@ fun NotificationScreen(
                                     notification = notification,
                                     onNotificationClick = onNotificationClick
                                 )
+                            }
+
+                            if (dismissState.currentValue == SwipeToDismissBoxValue.EndToStart) {
+                                coroutineScope.launch {
+                                    viewModel.deleteNotification(user.id, notification.id)
+                                }
                             }
                         }
                     }
