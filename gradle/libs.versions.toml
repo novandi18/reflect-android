@@ -24,7 +24,6 @@ room = "2.8.2"
 activityKtx = "1.11.0"
 firebaseAuth = "24.0.1"
 credentials = "1.5.0"
-
 playServicesAuth = "21.4.0"
 credentialsPlayServicesAuth = "1.5.0"
 googleid = "1.1.1"
@@ -38,6 +37,7 @@ gson = "2.13.2"
 okHttp = "5.2.1"
 composeChart = "0.2.0"
 appcompat = "1.7.1"
+biometric = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -92,6 +92,7 @@ okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHtt
 okHttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp" }
 compose-chart = { group = "io.github.ehsannarmani", name = "compose-charts", version.ref = "composeChart" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometric" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
