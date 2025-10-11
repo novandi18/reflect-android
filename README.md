@@ -59,7 +59,7 @@ Model-View-ViewModel (MVVM)
 
 ## Demo App
 You can download a demo version of the Reflect application (APK) to try it out directly on your Android device.
-[Download Reflect Demo APK](#) <!-- Link will be added -->
+[Download Reflect Demo APK](https://drive.google.com/file/d/1icsDGuOYn_ewoMhwrcYFizFTt-qqoRqD/view?usp=sharing)
 
 ## Contributing
 Contributions are welcome! We appreciate any help making Reflect better.
