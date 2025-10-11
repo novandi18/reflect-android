@@ -398,4 +398,6 @@
         <item>Perjalanan emosimu terus jalan—ayo catat mood-mu.</item>
         <item>Satu catatan mood per hari bikin kamu makin kenal diri sendiri.</item>
     </string-array>
+    <string name="biometric_title">Autentikasi Biometrik</string>
+    <string name="biometric_description">Tap sidik jari kamu ke layar</string>
 </resources>

@@ -494,4 +494,8 @@
     <string name="weekly_summary_channel_desc" translatable="false">Channel for weekly summary</string>
     <string name="weekly_summary_notification_title">Weekly Summary</string>
     <string name="weekly_summary_notification_desc">Your weekly summary is here! Discover your emotional highlights and insights now.</string>
+
+    <!--  Biometric Authentication  -->
+    <string name="biometric_title">Biometric Authentication</string>
+    <string name="biometric_description">Use your fingerprint to unlock the app</string>
 </resources>

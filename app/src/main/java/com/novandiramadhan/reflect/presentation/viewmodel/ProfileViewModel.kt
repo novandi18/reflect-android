@@ -134,6 +134,16 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    fun setBiometricSetting(useBiometric: Boolean) {
+        viewModelScope.launch {
+            settingDataStore.setState(
+                settings.value.copy(
+                    useBiometric = useBiometric
+                )
+            )
+        }
+    }
+
     fun onActivityRecreated() {
         when (val currentState = _settingState.value) {
             is SettingUiState.Success -> {

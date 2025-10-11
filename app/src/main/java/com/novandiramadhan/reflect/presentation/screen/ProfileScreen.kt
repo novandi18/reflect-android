@@ -280,23 +280,25 @@ fun ProfileScreen(
                         icon = Icons.Default.Fingerprint,
                         title = stringResource(R.string.biometrics_settings)
                     ) {
-                        Column(
-                            horizontalAlignment = Alignment.End
-                        ) {
-                            Switch(
-                                modifier = Modifier.align(Alignment.End),
-                                checked = settings.reminderTime.isNotEmpty(),
-                                onCheckedChange = { isChecked ->
+                        Switch(
+                            checked = settings.useBiometric,
+                            onCheckedChange = { isChecked ->
+                                viewModel.setBiometricSetting(isChecked)
+                                if (isChecked) {
+                                    Toast.makeText(
+                                        context,
+                                        "Biometric authentication enabled",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    Toast.makeText(
+                                        context,
+                                        "Biometric authentication disabled",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
-                            )
-
-                            if (settings.reminderTime.isNotEmpty()) {
-                                Text(
-                                    text = settings.reminderTime,
-                                    style = MaterialTheme.typography.bodySmall
-                                )
                             }
-                        }
+                        )
                     }
 
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))

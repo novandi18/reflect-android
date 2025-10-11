@@ -24,6 +24,7 @@ import com.novandiramadhan.reflect.ui.theme.ReflectTheme
 
 @Composable
 fun ReflectApp(
+    modifier: Modifier = Modifier,
     navHostController: NavHostController = rememberNavController(),
     startDestination: Destinations = Destinations.Welcome
 ) {
@@ -37,6 +38,7 @@ fun ReflectApp(
 
     RouteAwareCompositionLocalProvider(currentDestination) {
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBarSelector(
                     navHostController = navHostController,
@@ -85,4 +87,3 @@ fun ReflectAppPreview() {
         )
     }
 }
-
