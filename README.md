@@ -55,7 +55,8 @@ Model-View-ViewModel (MVVM)
 - **Profile Management:** User settings, security options, and data management
 
 ## Screenshots
-<!-- Screenshots will be added here -->
+<img width="1207" height="786" alt="Reflect Banner Photo Promotion" src="https://github.com/user-attachments/assets/ba405901-1712-401c-92c1-8ef33d7a2ac9" />
+
 
 ## Demo App
 You can download a demo version of the Reflect application (APK) to try it out directly on your Android device.
