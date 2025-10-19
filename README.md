@@ -86,5 +86,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 If you find this project helpful, please consider giving it a ⭐ on GitHub!
-
-For support or questions, please open an issue or contact us at [support@reflect-app.com](mailto:support@reflect-app.com).
