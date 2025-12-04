@@ -2,10 +2,8 @@ package com.novandiramadhan.reflect.di
 
 import android.content.Context
 import com.novandiramadhan.reflect.domain.usecase.NotificationUseCase
-import com.novandiramadhan.reflect.notification.manager.MonthlySummaryNotificationManager
 import com.novandiramadhan.reflect.notification.scheduler.NotificationScheduler
 import com.novandiramadhan.reflect.notification.manager.ReminderNotificationManager
-import com.novandiramadhan.reflect.notification.manager.WeeklySummaryNotificationManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,17 +21,6 @@ object NotificationModule {
         notificationUseCase: NotificationUseCase
     ) = ReminderNotificationManager(context, notificationUseCase)
 
-    @Singleton
-    @Provides
-    fun provideMonthlySummaryNotificationManager(
-        @ApplicationContext context: Context
-    ) = MonthlySummaryNotificationManager(context)
-
-    @Singleton
-    @Provides
-    fun provideWeeklySummaryNotificationManager(
-        @ApplicationContext context: Context
-    ) = WeeklySummaryNotificationManager(context)
 
     @Singleton
     @Provides

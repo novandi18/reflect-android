@@ -18,7 +18,6 @@ import com.novandiramadhan.reflect.presentation.navigation.Destinations
 import com.novandiramadhan.reflect.presentation.navigation.authGraph
 import com.novandiramadhan.reflect.presentation.navigation.entryGraph
 import com.novandiramadhan.reflect.presentation.navigation.mainGraph
-import com.novandiramadhan.reflect.presentation.navigation.notificationGraph
 import com.novandiramadhan.reflect.presentation.navigation.profileGraph
 import com.novandiramadhan.reflect.ui.theme.ReflectTheme
 
@@ -72,7 +71,6 @@ fun ReflectApp(
                 mainGraph(navController = navHostController)
                 entryGraph(navController = navHostController)
                 profileGraph()
-                notificationGraph()
             }
         }
     }

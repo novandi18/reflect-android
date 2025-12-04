@@ -117,12 +117,6 @@ class MainActivity : AppCompatActivity(), BiometricAuthListener {
                 }
             }
 
-            LaunchedEffect(userState.id) {
-                if (userState.id.isNotEmpty()) {
-                    enableWeeklyNotifications()
-                    enableMonthlyNotifications()
-                }
-            }
 
             if (startDestination == Destinations.Home && !NotificationPermissionUtil.hasNotificationPermission(this)) {
                 NotificationPermissionUtil.requestNotificationPermission(
@@ -168,25 +162,6 @@ class MainActivity : AppCompatActivity(), BiometricAuthListener {
         }
     }
 
-    private fun enableWeeklyNotifications() {
-        if (NotificationPermissionUtil.hasNotificationPermission(this)) {
-            try {
-                notificationScheduler.scheduleWeeklySummary()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun enableMonthlyNotifications() {
-        if (NotificationPermissionUtil.hasNotificationPermission(this)) {
-            try {
-                notificationScheduler.scheduleMonthlySummary()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
 
     override fun onBiometricAuthenticateError(error: Int, errMsg: String) {
         when (error) {

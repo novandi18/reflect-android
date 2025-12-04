@@ -71,19 +71,8 @@ sealed class Destinations(
         showBottomBar = false
     )
 
-    @Serializable
-    data object WeeklySummary: Destinations(
-        showBottomBar = false
-    )
-
-    @Serializable
-    data object MonthlySummary: Destinations(
-        showBottomBar = false
-    )
-
     companion object {
          val destinations = listOf(Welcome, SignIn, SignUp, Home, Insight, Profile, MoodEntry,
-             MoodHistory, Notifications, Settings, About, Feedback, ReportBug, WeeklySummary,
-             MonthlySummary)
+             MoodHistory, Notifications, Settings, About, Feedback, ReportBug)
     }
 }
